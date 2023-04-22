@@ -57,14 +57,15 @@ VAbar=VAtotal/n
 %expected perfusion per alveolus: 
 Qbar=Qtotal/n 
 
+% Generate random vectors for ventilation and perfusion (exponential random variables with a mean of 1)
 a1=-log(rand(n,1));
 a2=-log(rand(n,1));
-av=(a1+a2)/2;        
-VA=VAbar*(a1*beta+av*(1-beta));
-Q = Qbar*(a2*beta+av*(1-beta));
-r=VA./Q;
+av=(a1+a2)/2; % With mean of 1 and distribution like t*exp(-t)
+VA=VAbar*(a1*beta+av*(1-beta)); % When beta=1, the term av*(1-beta)=0, so VA and Q are independent
+Q = Qbar*(a2*beta+av*(1-beta)); % When beta=0, VA and Q are in fixed proportion
+r=VA./Q; % Find the r value by getting the ratio between VA and Q
 figure(1)
-plot(Q,VA,'.')
+plot(Q,VA,'.') % Plot VA vs. Q in a scatterplot
 
 %find actual values of 
 %VAtotal, Qtotal, VAbar, and Qbar:
