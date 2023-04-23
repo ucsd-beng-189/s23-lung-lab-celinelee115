@@ -2,7 +2,7 @@
 %heterogeneity parameter (0<=beta<=1):
 %beta=0 for homogenous lung
 %beta=1 for no ventilation/perfusion correlation
-
+beta=0.5;
 %number of iterations used in bisection:
 maxcount=20;
 %
@@ -24,7 +24,7 @@ cstar=cref;
 %in blood expressed in moles/liter)
 %
 %rate of oxygen consumption (moles/minute):
-M=0.25*cref*5.6;
+M=0.0263
 %
 %oxygen partial pressure 
 %at which hemoglobin is half-saturated:
@@ -61,19 +61,16 @@ a1=-log(rand(n,1));
 a2=-log(rand(n,1));
 av=(a1+a2)/2; % With mean of 1 and distribution like t*exp(-t)
 
-% Varies beta value
-beta=0:0.01:1;
-for i=1:length(beta)
-    VA=VAbar*(a1*beta(i)+av*(1-beta(i))); % When beta=1, the term av*(1-beta)=0, so VA and Q are independent
-    Q = Qbar*(a2*beta(i)+av*(1-beta(i))); % When beta=0, VA and Q are in fixed proportion
-    r(:,i)=VA./Q; % Find the r value by getting the ratio between VA and Q
-end
+VA=VAbar*(a1*beta+av*(1-beta)); % When beta=1, the term av*(1-beta)=0, so VA and Q are independent
+Q = Qbar*(a2*beta+av*(1-beta)); % When beta=0, VA and Q are in fixed proportion
+r=VA./Q; % Find the r value by getting the ratio between VA and Q
+
 %figure(1)
 %plot(Q,VA,'.') % Plot VA vs. Q in a scatterplot
 
 %find actual values of 
 %VAtotal, Qtotal, VAbar, and Qbar:
-% VAtotal=sum(VA)
-% Qtotal =sum(Q)
-% VAbar=VAtotal/n
-%  Qbar= Qtotal/n
+VAtotal=sum(VA)
+Qtotal =sum(Q)
+VAbar=VAtotal/n
+ Qbar= Qtotal/n
