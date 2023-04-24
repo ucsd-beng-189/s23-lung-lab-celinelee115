@@ -55,14 +55,14 @@ altitude=[0 5000 10000 15000 20000 25000];
 Pressure = [PAbar;Pabar;Pv];
 plot(altitude,Pressure,'Linewidth',1.2);
 legend Aveolar Arterial Venous;
-title('Partial Pressure of Oxygen vs. Altitude Above Sea Level');
+title('Partial Pressure of Oxygen (Adapt to High Altitude)');
 ylabel('Partial Pressure');
-xlabel('Altitude (feet)');
+xlabel('Altitude Above Sea Level (feet)');
 
 % Plot concentration of oxygen vs. cI
 Concentration = [cAbar;cabar;cv];
 plot(altitude,Concentration,'Linewidth',1.2);
 legend Aveolar Arterial Venous;
-title('Concentration of Oxygen vs. Altitude Above Sea Level');
+title('Concentration of Oxygen (Adapt to High Altitude)');
 ylabel('Concentration');
-xlabel('Altitude (feet)');
+xlabel('Altitude Above Sea Level (feet)');
