@@ -48,21 +48,20 @@ PAbar=RT.*cAbar;
 %oxygen partial pressure in the inspired air:
 PI=RT.*cI;
 % 
-
+% Get vector of altitude
+altitude=[0 5000 10000 15000 20000 25000];
 % Plot partial pressure of oxygen vs. cI
 Pressure = [PAbar;Pabar;Pv];
-plot(cstar,Pressure,'Linewidth',1.2);
+plot(altitude,Pressure,'Linewidth',1.2);
 legend Alveolar Arterial Venous;
-title('Partial Pressure of Oxygen vs. cstar');
+title('Partial Pressure of Oxygen Across Altitude Anemia');
 ylabel('Partial Pressure');
-xlabel('cstar');
-xlim([min(cstar) max(cstar)]);
+xlabel('Altitude (feet)');
 
 % Plot concentration of oxygen vs. cI
 Concentration = [cAbar;cabar;cv];
-plot(cstar,Concentration,'Linewidth',1.2);
+plot(altitude,Concentration,'Linewidth',1.2);
 legend Alveolar Arterial Venous;
-title('Concentration of Oxygen vs. cstar');
+title('Concentration of Oxygen Across Altitude Anemia');
 ylabel('Concentration');
-xlabel('cstar');
-xlim([min(cstar) max(cstar)]);
+xlabel('Altitude (feet)');
