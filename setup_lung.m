@@ -14,10 +14,10 @@ cref=0.2/(22.4*(310/273));
 %cref=concentration of oxygen 
 %in air at sea level at body temperature
 %
-for i=1:100
-    factor=linspace(1,10,100);
+mo=[0.2095 0.1604 0.1243 0.0935 0.07 0.0524];
+for i=1:6
     %oxygen concentration in the inspired air:
-    cI(i)=cref/factor(i); % Create various values of cI and store in cI
+    cI(i)=cref/0.2*mo(i);
     %
     %blood oxygen concentration
     %at full hemoglobin saturation: 
