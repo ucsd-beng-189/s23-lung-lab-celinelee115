@@ -14,13 +14,14 @@ cref=0.2/(22.4*(310/273));
 %cref=concentration of oxygen 
 %in air at sea level at body temperature
 %
-%oxygen concentration in the inspired air:
-cI=cref/0.2*0.1118;
-%
-%blood oxygen concentration
-%at full hemoglobin saturation: 
-for i=1:100
-    cstar(i)=cref-(i-1)/10000;
+mo=[0.2095 0.1604 0.1243 0.0935 0.07 0.0524];
+for i=1:6
+    %oxygen concentration in the inspired air:
+    cI(i)=cref/0.2*mo(i);
+    %
+    %blood oxygen concentration
+    %at full hemoglobin saturation: 
+    cstar=0.003;
     %cstar=4*(concentration of hemoglobin 
     %in blood expressed in moles/liter)
     %
@@ -37,10 +38,10 @@ for i=1:100
     %
     %oxygen partial pressure 
     %in the inspired air (mmHg):
-    PI=RT*cI;
+    PI=RT*cI(i);
     % oxygen concentration
     % in blood exposed directly to inspired air:
-    camax(i)=cstar(i)*(PI/Pstar)^3/(1+(PI/Pstar)^3);
+    camax(i)=cstar*(PI/Pstar)^3/(1+(PI/Pstar)^3);
     % camax is an upper bound 
     % on oxygen concentration in blood
 end
