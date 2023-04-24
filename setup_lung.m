@@ -21,7 +21,7 @@ for i=1:6
     %
     %blood oxygen concentration
     %at full hemoglobin saturation: 
-    cstar=cref;
+    cstar=1.5*cref;
     %cstar=4*(concentration of hemoglobin 
     %in blood expressed in moles/liter)
     %
